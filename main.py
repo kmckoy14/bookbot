@@ -13,14 +13,29 @@ def main():
 
     # Character Count
         # Convert to Lower Case
-    char_count = get_character_count(text)
-    print(char_count)
+    character_dict = get_character_count(text)
+    print(character_dict)
+
+    # Print Report
+        # Word and char data
+    # print_report(book_file_path, word_count, charcter_dict)
+
+
+def read_books(path):
+    with open(path) as f:
+        return f.read()
+
+
+def get_word_count(book_text):
+    words = book_text.split()
+    count_words = len(words)
+    return count_words
+
 
 def get_character_count(string):
     char_count_dict = {}
     lower_case_string = string.lower()
     
-
     for words in lower_case_string:
         word = words.split()
 
@@ -31,16 +46,8 @@ def get_character_count(string):
                 char_count_dict[char] = 1
     return char_count_dict                     
 
-def get_word_count(book_text):
-    words = book_text.split()
-    count_words = len(words)
-    return count_words
 
 
-
-def read_books(path):
-    with open(path) as f:
-        return f.read()
 
 
 main()
