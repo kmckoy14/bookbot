@@ -14,12 +14,21 @@ def main():
     # Character Count
         # Convert to Lower Case
     character_dict = get_character_count(text)
-    print(character_dict)
+
 
     # Print Report
         # Word and char data
     # print_report(book_file_path, word_count, charcter_dict)
+    chars_sorted_list = chars_dict_to_sorted_list(character_dict)
 
+    for item in chars_sorted_list:
+        if not item["char"].isalpha():
+            continue
+        print(f"The '{item['char']}' character was found {item['num']} times")
+
+    print("--- End report ---")
+
+    
 
 def read_books(path):
     with open(path) as f:
@@ -46,6 +55,18 @@ def get_character_count(string):
                 char_count_dict[char] = 1
     return char_count_dict                     
 
+
+# Converting a dictionary into a list of dictionaries
+def sort_on(dict):
+    return dict["num"]
+
+def chars_dict_to_sorted_list(num_chars_dict):
+    sorted_list = []
+
+    for char in num_chars_dict:
+        sorted_list.append({"char": char, "num": num_chars_dict[char]})
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list
 
 
 
