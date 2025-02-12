@@ -1,6 +1,4 @@
 
-my_string = "Hello, my name is Keaton."
-
 # Entry Point Function
 
 def main():
